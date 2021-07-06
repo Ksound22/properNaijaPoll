@@ -35,20 +35,15 @@ const createSendToken = (user, statusCode, req, res) => {
 
 const signUp = async (req, res, next) => {
   try {
-    const newUser = await User.create({
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
-      // username: req.body.username,
-      email: req.body.email,
-      password: req.body.password,
-      passwordConfirm: req.body.passwordConfirm,
-    });
+    const newUser = await User.create(req.body);
 
     createSendToken(newUser, 201, req, res);
   } catch (err) {
+    console.log(err);
     res.status(400).json({
       status: "fail",
       message: err,
+      errmsg,
     });
   }
 };

@@ -10,7 +10,7 @@ const getAllUsers = async (req, res) => {
     }
 
     const users = await UserProfile.find(search);
-    res.status(200).json({ msg: "Here are the Users",users});
+    res.status(200).json({ msg: "Here are the Users", users });
   } catch (err) {
     res.status(500).json({ msg: err });
   }
@@ -19,9 +19,7 @@ const getAllUsers = async (req, res) => {
 // Fetch recent users
 const recentUsers = async (req, res) => {
   try {
-    const users = await UserProfile.find()
-      .sort({ createdAt: -1 })
-      .limit(3);
+    const users = await UserProfile.find().sort({ createdAt: -1 }).limit(3);
 
     res.json(users);
   } catch (err) {
@@ -44,68 +42,72 @@ const getSingleUser = async (req, res) => {
 
 // Update user
 const updateUser = async (req, res) => {
-
   var data = await UserProfile.findById(req.params.id);
 
-  if(req.body.hobbies){
+  if (req.body.hobbies) {
     var hobbiesArray = data["hobbies"];
-    req.body.hobbies.forEach((hobby)=>{
+    req.body.hobbies.forEach((hobby) => {
       const index = hobbiesArray.indexOf(hobby);
       if (index > -1) {
         hobbiesArray.splice(index, 1);
-      }else{
+      } else {
         hobbiesArray.push(hobby);
-      } 
-  });
+      }
+    });
   }
 
-  if(req.body.education){
-  var educationArray = data["education"];
-    req.body.education.forEach((obj)=>{
+  if (req.body.education) {
+    var educationArray = data["education"];
+    req.body.education.forEach((obj) => {
       var matched = -1;
-      
-        for(var i = 0; i < educationArray.length;i++){
-        if(educationArray[i].name == obj.name && educationArray[i].degree == obj.degree){
+
+      for (var i = 0; i < educationArray.length; i++) {
+        if (
+          educationArray[i].name == obj.name &&
+          educationArray[i].degree == obj.degree
+        ) {
           matched = i;
         }
       }
-       if(matched != -1) {
+      if (matched != -1) {
         educationArray.splice(matched, 1);
-      }else{
+      } else {
         educationArray.push(obj);
-      } 
-  });
+      }
+    });
   }
 
   try {
     const user = await UserProfile.findByIdAndUpdate(
-        req.params.id,
-        { $set: {
-            firstname: req.body.firstname,
-            lastname: req.body.lastname,
-            email: req.body.email,
-            password: req.body.password,
-            passwordConfirm: req.body.passwordConfirm,
-            username: req.body.username,
-            gender: req.body.gender,
-            profileImg: req.body.profileImg,
-            headerImg: req.body.headerImg,
-            education: req.body.education,
-            hobbies: hobbiesArray
-        }},
+      req.params.id,
+      {
+        $set: {
+          firstname: req.body.firstname,
+          lastname: req.body.lastname,
+          email: req.body.email,
+          password: req.body.password,
+          passwordConfirm: req.body.passwordConfirm,
+          username: req.body.username,
+          gender: req.body.gender,
+          profileImg: req.body.profileImg,
+          headerImg: req.body.headerImg,
+          education: req.body.education,
+          hobbies: hobbiesArray,
+        },
+      },
 
-        {
-            new: true,
-            runValidators: true,
-            omitUndefined: true
-        }
+      {
+        new: true,
+        runValidators: true,
+        omitUndefined: true,
+      }
     );
 
     if (!user) {
       return res.status(404).json({ msg: "User not found" });
     }
 
-    res.status(200).json({ msg: "User updated",user});
+    res.status(200).json({ msg: "User updated", user });
   } catch (err) {
     res.status(500).json({ msg: err });
   }
@@ -118,9 +120,7 @@ const deleteUser = async (req, res) => {
     if (!user) {
       return res.status(404).json({ msg: "User not found" });
     }
-    res
-      .status(200)
-      .json({ msg: `User with the id ${req.params.id} deleted!` });
+    res.status(200).json({ msg: `User with the id ${req.params.id} deleted!` });
   } catch (err) {
     res.status(500).json({ msg: err });
   }

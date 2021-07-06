@@ -54,7 +54,7 @@ const options = {
     },
     servers: [
       {
-        url: "localhost:4000/api/v1/",
+        url: "https://propernaijapoll.heroku.app.com/api/v1/", //"localhost:4000/api/v1/",
       },
     ],
   },

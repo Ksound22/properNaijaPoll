@@ -7,7 +7,7 @@ const {
   recentUsers,
   updateUser,
   deleteUser,
-} = require("../controllers/userProfile.js");
+} = require("../controllers/userProfile.js"); 
 
 /**
  * @swagger

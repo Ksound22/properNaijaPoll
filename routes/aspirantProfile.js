@@ -41,7 +41,7 @@ const {
  *         profileImg:
  *           type: String
  *           description: Aspirant profile image
- *         headerImg: 
+ *         headerImg:
  *           type: String
  *           description: Aspirant header image
  *         hobbies:
@@ -58,15 +58,14 @@ const {
  *         manifesto: I promise to privide stable electricity
  */
 
- /**
-  * @swagger
-  * tags:
-  *   name: Aspirants
-  *   description: 9JAPOLL API Documentation V1.0.0
-  */
+/**
+ * @swagger
+ * tags:
+ *   name: Aspirants
+ *   description: 9JAPOLL API Documentation V1.0.0
+ */
 
-
- /**
+/**
  * @swagger
  * /api/v1/aspirant:
  *   post:
@@ -90,7 +89,6 @@ const {
  */
 // Create article
 router.post("/aspirant", createAspirant);
-
 
 /**
  * @swagger
@@ -162,7 +160,7 @@ router.get("/recentAspirants", recentAspirants);
  *  put:
  *    summary: Update the aspirant by the id
  *    tags: [Aspirants]
-  *    parameters:
+ *    parameters:
  *      - in: path
  *        name: id
  *        schema:
@@ -179,7 +177,7 @@ router.get("/recentAspirants", recentAspirants);
  *            data:
  *              name: Mark Essien
  *              email: mark@gmail.com
- *           
+ *
  *    responses:
  *      200:
  *        description: The user was updated successfully
@@ -208,7 +206,7 @@ router.put("/aspirant/:id", updateAspirant);
  *           type: string
  *         required: true
  *         description: The aspirant id
- * 
+ *
  *     responses:
  *       200:
  *         description: The aspirant was deleted successfully

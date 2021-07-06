@@ -32,7 +32,7 @@ const {
  *         author:
  *           type: String
  *           description: The author of the article
- *         headerImg: 
+ *         headerImg:
  *           type: String
  *           description: Article header image
  *         description:
@@ -40,7 +40,7 @@ const {
  *          description: Description of the article
  *         body:
  *          type: String
- *          description: The body of the article        
+ *          description: The body of the article
  *       example:
  *         title: Local Politics
  *         author: Donald Duke
@@ -49,15 +49,14 @@ const {
  *         body: A dirty politics
  */
 
- /**
-  * @swagger
-  * tags:
-  *   name: Article
-  *   description: 9JAPOLL API Documentation V1.0.0
-  */
+/**
+ * @swagger
+ * tags:
+ *   name: Article
+ *   description: 9JAPOLL API Documentation V1.0.0
+ */
 
-
-  /**
+/**
  * @swagger
  * /api/v1/articles:
  *   post:
@@ -82,7 +81,6 @@ const {
 // Create article
 router.post("/articles", createArticle);
 
-
 /**
  * @swagger
  * /api/v1/articles:
@@ -101,7 +99,6 @@ router.post("/articles", createArticle);
  */
 // Get all articles
 router.get("/articles", getAllArticles);
-
 
 /**
  * @swagger
@@ -129,7 +126,6 @@ router.get("/articles", getAllArticles);
 // Get single article
 router.get("/article/:id", getSingleArticle);
 
-
 /**
  * @swagger
  * /api/v1/recentArticles:
@@ -149,14 +145,13 @@ router.get("/article/:id", getSingleArticle);
 // Get recent articles
 router.get("/recentArticles", recentArticles);
 
-
 /**
  * @swagger
  * /api/v1/article/{id}:
  *  put:
  *    summary: Update the article by the id
  *    tags: [Article]
-  *    parameters:
+ *    parameters:
  *      - in: path
  *        name: id
  *        schema:
@@ -172,7 +167,7 @@ router.get("/recentArticles", recentArticles);
  *          example:
  *            data:
  *              title: The legacies of Tinubu
- *           
+ *
  *    responses:
  *      200:
  *        description: The article was updated successfully
@@ -201,7 +196,7 @@ router.put("/article/:id", updateArticle);
  *           type: string
  *         required: true
  *         description: The article id
- * 
+ *
  *     responses:
  *       200:
  *         description: The article was deleted successfully

@@ -4,7 +4,6 @@ const swaggerJsDoc = require("swagger-jsdoc");
 const cors = require("cors");
 require("dotenv").config();
 
-
 // Error HAndler middleware
 const errorHandler = require("./middlewares/errorHandler");
 
@@ -18,7 +17,7 @@ const userRoutes = require("./routes/userProfile");
 const dbSetup = require("./db/connectDB");
 
 // Port
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 4000;
 
 // Connect to the database
 dbSetup();
